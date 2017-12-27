@@ -1,6 +1,8 @@
 class Part
   include Mongoid::Document
   include Mongoid::Timestamps
+
+  has_and_belongs_to_many :reports
   
   field :name, type: String
   field :section, type: String

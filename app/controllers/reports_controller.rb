@@ -21,6 +21,7 @@ class ReportsController < ApplicationController
 
   # POST /reports
   def create
+    
     @report = Report.new(report_params)
 
     if @report.save
@@ -53,6 +54,6 @@ class ReportsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def report_params
-      params.require(:report).permit(:initials)
+      params.require(:report).permit(:initials, :part_ids => [])
     end
 end

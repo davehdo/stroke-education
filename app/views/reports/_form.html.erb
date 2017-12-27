@@ -16,7 +16,19 @@
     <%= form.text_field :initials %>
   </div>
 
+  <% Part.all.group_by {|e| e.section}.each do |section, parts_for_section| %>
+    <h5><%= section %></h5>
+    <% parts_for_section.each do |part| %>
+      <div>
 
+        <div class="field">
+          <%= check_box_tag "report[part_ids][]",  part.to_param, nil %>
+          <%= label_tag "report[part_ids][]", part.name %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  
   <div class="actions">
     <%= form.submit %>
   </div>
