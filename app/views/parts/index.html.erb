@@ -3,7 +3,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Parts</h1>
-
+<p>Each report is made of these components</p>
 <table>
 
   <tbody>
@@ -21,10 +21,8 @@
         <tr>
           <td><%= part.name %></td>
           <td>
-            <div><b>Description:</b></div>
-            <%= part.description_text %>
-            <div><b>Goals:</b></div>
-            <%= part.goals_text %>
+            <p><%= part.description_text %></p>
+            <p><%= part.goals_text %></p>
           </td>
           <td><%= link_to 'Show', part %></td>
           <td><%= link_to 'Edit', edit_part_path(part) %></td>

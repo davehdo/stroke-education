@@ -1,22 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 
+<h3 class="text-center">My Stroke Information</h3>
 
 
-<% @report.parts.group_by {|e| e.section}.each do |section, parts_in_section| %>
-  <h5><%= section %></h5>
 
-  <% parts_in_section.each do |part| %>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-3 large-2 cell"><%= part.name %></div>
-      <div class="medium-9 large-10 cell">
-        <p><%= part.description_text %></p>
-        <p><%= part.goals_text %></p>
-      </div>
-    </div>
-  <% end %>
 
-<% end %>
+<h5 class="text-center">Introduction</h5>
+<%= render @report.parts.select {|e| e.section == "intro"} %>
+
+<hr />
+<h5 class="text-center">My risk factors</h5>
+<%= render @report.parts.select {|e| e.section == "risk factors"} %>
+
+<hr />
+<h5 class="text-center">My Medications</h5>
+<%= render @report.parts.select {|e| e.section == "medications"} %>
+
+
+<hr />
+<h5 class="text-center">My Upcoming Testing</h5>
+<%= render @report.parts.select {|e| e.section == "testing"} %>
+
+<hr />
+<h5 class="text-center">My Next Steps</h5>
+<%= render @report.parts.select {|e| e.section == "next steps"} %>
 
 
 <%= link_to 'Edit', edit_report_path(@report) %> |
