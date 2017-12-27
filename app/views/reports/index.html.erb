@@ -2,36 +2,37 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Reports</h1>
+<div class="grid-x grid-padding-x">
+  <div class="cell">
+  
+    <h1>Reports</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>For (Initials)</th>
-      <th>Created</th>
-      <th>Link Delivered</th>
-      <th>Accessed</th>
-      <th>Link</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <table>
+      <thead>
+        <tr>
+          <th>For (Initials)</th>
+          <th>Created</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @reports.each do |report| %>
-      <tr>
-        <td><%= report.initials %></td>
-        <td><%= report.created_at %></td>
-        <td><%= report.link_delivered_at %></td>
-        <td><%= report.accessed_at %></td>
-        <td><%= report.key %></td>
-        <td><%= link_to 'Show', report %></td>
-        <td><%= link_to 'Edit', edit_report_path(report) %></td>
-        <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @reports.each do |report| %>
+          <tr>
+            <td><%= report.initials %></td>
+            <td><%= report.created_at %></td>
+            <td><%= link_to 'Show', report %></td>
+            <td><%= link_to 'Edit', edit_report_path(report) %></td>
+            <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <br />
 
-<br>
+    <%= link_to 'New Report', new_report_path %>
+    
+  </div>
+</div>
 
-<%= link_to 'New Report', new_report_path %>
