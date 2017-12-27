@@ -1,3 +1,5 @@
+<%= render "layouts/admin_nav" %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Parts</h1>
@@ -17,7 +19,12 @@
       <tr>
         <td><%= part.name %></td>
         <td><%= part.section %></td>
-        <td><%= part.text %></td>
+        <td>
+          <div><b>Description:</b></div>
+          <%= part.description_text %>
+          <div><b>Goals:</b></div>
+          <%= part.goals_text %>
+        </td>
         <td><%= link_to 'Show', part %></td>
         <td><%= link_to 'Edit', edit_part_path(part) %></td>
         <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>

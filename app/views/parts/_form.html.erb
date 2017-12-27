@@ -18,12 +18,17 @@
 
   <div class="field">
     <%= form.label :section %>
-    <%= form.text_field :section, id: :part_section %>
+    <%= form.select :section, ["medications", "risk factors"], id: :part_section %>
   </div>
 
   <div class="field">
-    <%= form.label :text %>
-    <%= form.text_field :text, id: :part_text %>
+    <%= form.label :description_text %>
+    <%= form.text_area :description_text, id: :part_description_text, rows: 6 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :goals_text %>
+    <%= form.text_area :goals_text, id: :part_goals_text, rows: 6 %>
   </div>
 
   <div class="actions">

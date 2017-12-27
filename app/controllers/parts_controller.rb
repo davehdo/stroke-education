@@ -53,6 +53,6 @@ class PartsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def part_params
-      params.require(:part).permit(:name, :section, :text)
+      params.require(:part).permit(:name, :section, :description_text, :goals_text)
     end
 end
