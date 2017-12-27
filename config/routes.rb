@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :reports
   resources :parts
+  
   namespace :api do
     namespace :v1 do
       resources :trips, except: [:new, :update, :edit]
@@ -10,7 +11,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  root 'static_pages#index'
+  
+  root 'reports#index'
   get 'trips' => 'static_pages#index'
   get 'trips/:id' => 'static_pages#index'
 
