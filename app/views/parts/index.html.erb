@@ -5,30 +5,32 @@
 <h1>Parts</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Section</th>
-      <th>Text</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
-    <% @parts.each do |part| %>
+    <% @parts.group_by {|e| e.section}.each do |section, parts_in_section| %>
       <tr>
-        <td><%= part.name %></td>
-        <td><%= part.section %></td>
-        <td>
-          <div><b>Description:</b></div>
-          <%= part.description_text %>
-          <div><b>Goals:</b></div>
-          <%= part.goals_text %>
-        </td>
-        <td><%= link_to 'Show', part %></td>
-        <td><%= link_to 'Edit', edit_part_path(part) %></td>
-        <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td colspan="5"><h5><%= section %></h5></td>
       </tr>
+      <tr>
+        <th>Name</th>
+        <th>Text</th>
+        <th colspan="3"></th>
+      </tr>
+      
+      <% parts_in_section.each do |part| %>
+        <tr>
+          <td><%= part.name %></td>
+          <td>
+            <div><b>Description:</b></div>
+            <%= part.description_text %>
+            <div><b>Goals:</b></div>
+            <%= part.goals_text %>
+          </td>
+          <td><%= link_to 'Show', part %></td>
+          <td><%= link_to 'Edit', edit_part_path(part) %></td>
+          <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
