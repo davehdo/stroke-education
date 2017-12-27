@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :section %>
-    <%= form.select :section, ["medications", "risk factors"], id: :part_section %>
+    <%= form.select :section, Part.section_names, id: :part_section %>
   </div>
 
   <div class="field">

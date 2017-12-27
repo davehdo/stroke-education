@@ -16,15 +16,16 @@
     <%= form.text_field :initials %>
   </div>
 
-  <% Part.all.group_by {|e| e.section}.each do |section, parts_for_section| %>
+  <% Part.all.sort_by {|e| Part.section_names.index(e.section) || "z"}.group_by {|e| e.section}.each do |section, parts_for_section| %>
     <h5><%= section %></h5>
     <% parts_for_section.each do |part| %>
       <div>
 
-        <div class="field">
-          <%= check_box_tag "report[part_ids][]",  part.to_param, nil %>
-          <%= label_tag "report[part_ids][]", part.name %>
-        </div>
+          <label>
+            <%# check_box_tag(name, value = "1", checked = false, options = {}) public %>
+            <%= check_box_tag "report[part_ids][]", part.to_param, report.parts.include?(part) %>
+            <%= part.name %>
+          </label>
       </div>
     <% end %>
   <% end %>

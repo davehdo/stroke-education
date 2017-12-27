@@ -6,24 +6,16 @@
 <% @report.parts.group_by {|e| e.section}.each do |section, parts_in_section| %>
   <h5><%= section %></h5>
 
-  <table>
+  <% parts_in_section.each do |part| %>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-3 large-2 cell"><%= part.name %></div>
+      <div class="medium-9 large-10 cell">
+        <p><%= part.description_text %></p>
+        <p><%= part.goals_text %></p>
+      </div>
+    </div>
+  <% end %>
 
-    <tbody>
-      
-      <% parts_in_section.each do |part| %>
-        <tr>
-          <td><%= part.name %></td>
-          <td>
-            <div><b>Description:</b></div>
-            <%= part.description_text %>
-            <div><b>Goals:</b></div>
-            <%= part.goals_text %>
-          </td>
-
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 <% end %>
 
 
