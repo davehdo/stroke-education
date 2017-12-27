@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+
+<h2 class="text-center">My Stroke Information</h2>
+
+
+
+<div class="dark-section">
+  <h4 class="text-center">Introduction</h4>
+  <%= render @report.parts.select {|e| e.section == "intro"} %>
+</div>
+
+<div class="light-section">
+  <h4 class="text-center">My risk factors</h4>
+  <%= render @report.parts.select {|e| e.section == "risk factors"} %>
+</div>
+
+<div class="dark-section">
+  <h4 class="text-center">My Medications</h4>
+  <p class="text-center">(Just the stroke ones)</p>
+  <%= render @report.parts.select {|e| e.section == "medications"} %>
+  <p class="text-center">Upon discharge, the nurse will review my complete medication list with me.</p>
+  
+</div>
+
+
+<div class="light-section">
+  <h4 class="text-center">My Upcoming Testing</h4>
+  <%= render @report.parts.select {|e| e.section == "testing"} %>
+</div>
+
+<div class="dark-section">
+  <h4 class="text-center">My Next Steps</h4>
+  <%= render @report.parts.select {|e| e.section == "next steps"} %>
+</div>
+
+<div class="text-center">
+  <%= link_to 'Edit', edit_report_path(@report) %> |
+  <%= link_to 'Back', reports_path %>
+</div>

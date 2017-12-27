@@ -1,0 +1,20 @@
+// Place all the styles related to the Reports controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$color1: #7C786A;
+$color2: #8DCDC1;
+$color3: #D3E397;
+$color4: #FFF5C3;
+$color5: #EB6E44;
+
+.dark-section {
+  background-color: $color2;
+  padding-top: 20px; 
+  padding-bottom: 25px; 
+}
+
+.light-section {
+
+  padding-top: 20px; 
+  padding-bottom: 25px; 
+}

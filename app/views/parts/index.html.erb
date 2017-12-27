@@ -1,0 +1,39 @@
+<%= render "layouts/admin_nav" %>
+
+<p id="notice"><%= notice %></p>
+
+<div class="grid-x grid-padding-x">
+  <div class="cell">
+
+    <h1>Parts</h1>
+    <p>Each report is made of these components</p>
+    <table>
+
+      <tbody>
+        <% @parts.group_by {|e| e.section}.each do |section, parts_in_section| %>
+          <tr>
+            <td colspan="2"><h5><%= section %></h5></td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <th>Text</th>
+          </tr>
+      
+          <% parts_in_section.each do |part| %>
+            <tr>
+              <td><%= link_to part.name, edit_part_path(part) %></td>
+              <td>
+                <div style="margin-bottom: 10px;"><%= part.description_text %></div>
+                <div><i><%= part.goals_text %></i></div>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br />
+
+    <%= link_to 'New Part', new_part_path %>
+  </div>
+</div>
