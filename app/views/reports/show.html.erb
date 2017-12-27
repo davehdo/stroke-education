@@ -5,26 +5,31 @@
 
 
 
+<div class="dark-section">
+  <h4 class="text-center">Introduction</h5>
+  <%= render @report.parts.select {|e| e.section == "intro"} %>
+</div>
 
-<h5 class="text-center">Introduction</h5>
-<%= render @report.parts.select {|e| e.section == "intro"} %>
+<div class="light-section">
+  <h4 class="text-center">My risk factors</h5>
+  <%= render @report.parts.select {|e| e.section == "risk factors"} %>
+</div>
 
-<hr />
-<h5 class="text-center">My risk factors</h5>
-<%= render @report.parts.select {|e| e.section == "risk factors"} %>
-
-<hr />
-<h5 class="text-center">My Medications</h5>
-<%= render @report.parts.select {|e| e.section == "medications"} %>
+<div class="dark-section">
+  <h4 class="text-center">My Medications</h5>
+  <%= render @report.parts.select {|e| e.section == "medications"} %>
+</div>
 
 
-<hr />
-<h5 class="text-center">My Upcoming Testing</h5>
-<%= render @report.parts.select {|e| e.section == "testing"} %>
+<div class="light-section">
+  <h4 class="text-center">My Upcoming Testing</h5>
+  <%= render @report.parts.select {|e| e.section == "testing"} %>
+</div>
 
-<hr />
-<h5 class="text-center">My Next Steps</h5>
-<%= render @report.parts.select {|e| e.section == "next steps"} %>
+<div class="dark-section">
+  <h4 class="text-center">My Next Steps</h5>
+  <%= render @report.parts.select {|e| e.section == "next steps"} %>
+</div>
 
 
 <%= link_to 'Edit', edit_report_path(@report) %> |
