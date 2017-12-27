@@ -1,13 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Key:</strong>
-  <%= @report.key %>
-</p>
 
 
-<% @report.parts.each do |part| %>
-  <div><%= part.name %><div>
+
+<% @report.parts.group_by {|e| e.section}.each do |section, parts_in_section| %>
+  <h5><%= section %></h5>
+
+  <table>
+
+    <tbody>
+      
+      <% parts_in_section.each do |part| %>
+        <tr>
+          <td><%= part.name %></td>
+          <td>
+            <div><b>Description:</b></div>
+            <%= part.description_text %>
+            <div><b>Goals:</b></div>
+            <%= part.goals_text %>
+          </td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
 
 
