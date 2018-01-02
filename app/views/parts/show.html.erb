@@ -1,24 +1,32 @@
+<%= render "layouts/admin_nav" %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @part.name %>
-</p>
 
-<p>
-  <strong>Section:</strong>
-  <%= @part.section %>
-</p>
+<div class="grid-x grid-padding-x" >
 
-<p>
-  <strong>Description Text:</strong>
-  <%= @part.description_text %>
-</p>
+  <div class="medium-9 cell">
 
-<p>
-  <strong>Goals Text:</strong>
-  <%= @part.goals_text %>
-</p>
+    
+    <div class="dark-section" style="padding: 10px; ">
+      <div class="text-right">
+        <%= link_to "Edit this part", edit_part_url(@part), class: "button" %>
+      </div>
+      
+      <h4 class="text-center" data-magellan-destination="risk_factors"><%= @part.section %></h4>
+      <%= render @part %>
+    </div>
+  </div><!-- /medium.cell -->
+  
+  <div class="medium-3 cell">
+    <%= render "parts_sidebar" %>
+  </div><!-- /medium.cell -->
+</div>
 
-<%= link_to 'Edit', edit_part_path(@part) %> |
-<%= link_to 'Back', parts_path %>
+
+
+
+
+<style type="text/css" media="screen">
+ 
+</style>

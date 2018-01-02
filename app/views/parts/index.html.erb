@@ -29,7 +29,8 @@
               <td><% if part.is_checked_by_default %>
                 <i class="fa fa-check" aria-hidden="true"></i> 
                 <% end %>
-                <%= link_to part.name, edit_part_path(part) %>
+                <%= link_to part.name, part_path(part) %> 
+                (<%= link_to "Edit", edit_part_path(part) %>)
               </td>
               <td>
                 <div style="margin-bottom: 10px;"><%= part.description_text %></div>

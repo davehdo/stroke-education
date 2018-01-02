@@ -1,0 +1,13 @@
+<ul class="side-nav">
+  <% Part.all.group_by {|e| e.section}.sort_by {|sec, ee| Part.section_names.index(sec) || 1e6}.each do |section, parts_in_section| %>
+
+
+    <% parts_in_section.each do |part| %>
+      <li class="active"><%= link_to part.name, part_path(part) %> </li>
+  
+    <% end %>
+    <li class="divider"></li>
+  <% end %>
+  
+  <li class="active"><%= link_to "New Part", new_part_path %> </li>
+</ul>

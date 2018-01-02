@@ -1,7 +1,7 @@
 <%= render "layouts/admin_nav" %>
 
 <div class="grid-x grid-padding-x" >
-  <div class="cell">
+  <div class="medium-9 cell">
     <h1>New Part</h1>
 
     <%= render 'form', part: @part %>
@@ -9,6 +9,9 @@
     <br />
     <%= link_to 'Back', parts_path %>
     
-  </div>
+  </div><!-- /medium.cell -->
+  
+  <div class="medium-3 cell">
+    <%= render "parts_sidebar" %>
+  </div><!-- /medium.cell -->
 </div>
-

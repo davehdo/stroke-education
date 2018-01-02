@@ -8,7 +8,6 @@ class PartsController < ApplicationController
 
   # GET /parts/1
   def show
-    redirect_to parts_url
   end
 
   # GET /parts/new
