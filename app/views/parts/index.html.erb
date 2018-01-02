@@ -19,14 +19,24 @@
           <tr>
             <th>Name</th>
             <th>Text</th>
+            <th>Embedded Content?</th>
           </tr>
       
           <% parts_in_section.each do |part| %>
             <tr>
-              <td><%= link_to part.name, edit_part_path(part) %></td>
+              <td><% if part.is_checked_by_default %>
+                <i class="fa fa-check" aria-hidden="true"></i> 
+                <% end %>
+                <%= link_to part.name, edit_part_path(part) %>
+              </td>
               <td>
                 <div style="margin-bottom: 10px;"><%= part.description_text %></div>
                 <div><i><%= part.goals_text %></i></div>
+              </td>
+              <td>
+                <% if part.embedded_html.present? %>
+                  <i class="fa fa-file-video-o" aria-hidden="true"></i> 
+                <% end %>
               </td>
             </tr>
           <% end %>
