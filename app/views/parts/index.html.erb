@@ -10,7 +10,7 @@
     <table>
 
       <tbody>
-        <% @parts.group_by {|e| e.section}.sort_by {|sec, ee| Part.section_names.index(sec) || "z"}.each do |section, parts_in_section| %>
+        <% @parts.group_by {|e| e.section}.sort_by {|sec, ee| Part.section_names.index(sec) || 1e6}.each do |section, parts_in_section| %>
           <tr>
             <td colspan="2" style="background-color: white; ">
               <div class="text-center" style="margin-top: 40px; font-size: 1.4em; "><%= section %></div>

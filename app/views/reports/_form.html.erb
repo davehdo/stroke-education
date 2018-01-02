@@ -16,7 +16,7 @@
     <%= form.text_field :initials %>
   </div>
 
-  <% Part.all.sort_by {|e| Part.section_names.index(e.section) || "z"}.group_by {|e| e.section}.each do |section, parts_for_section| %>
+  <% Part.all.sort_by {|e| Part.section_names.index(e.section) || 1e6}.group_by {|e| e.section}.each do |section, parts_for_section| %>
     <h5><%= section %></h5>
     <% parts_for_section.each do |part| %>
       <div>
