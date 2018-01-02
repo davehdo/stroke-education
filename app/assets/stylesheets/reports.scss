@@ -10,6 +10,9 @@ $color5: #EB6E44;
 $pennblue: #2F4673;
 $pennred: #8C1127;
 
+
+
+
 .active[data-magellan-arrival] a {
   background-color: $pennred !important;
 }
@@ -31,7 +34,7 @@ $pennred: #8C1127;
 }
 
 .light-section {
-
+  background-color: white; 
   padding-top: 20px; 
   padding-bottom: 25px; 
 }
