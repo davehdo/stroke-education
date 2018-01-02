@@ -12,6 +12,6 @@ class Part
   field :embedded_html, type: String
   
   def self.section_names
-    ["intro", "medications", "risk factors", "testing", "followup"]
+    ["intro", "risk factors", "medications", "testing", "followup"]
   end
 end
