@@ -6,13 +6,15 @@
   <div class="cell">
 
     <h1>Parts</h1>
-    <p>Each report is made of these components</p>
+    <p>Each report is made of these components.</p>
     <table>
 
       <tbody>
-        <% @parts.group_by {|e| e.section}.each do |section, parts_in_section| %>
+        <% @parts.group_by {|e| e.section}.sort_by {|sec, ee| Part.section_names.index(sec) || "z"}.each do |section, parts_in_section| %>
           <tr>
-            <td colspan="2"><h5><%= section %></h5></td>
+            <td colspan="2" style="background-color: white; ">
+              <div class="text-center" style="margin-top: 40px; font-size: 1.4em; "><%= section %></div>
+            </td>
           </tr>
           <tr>
             <th>Name</th>

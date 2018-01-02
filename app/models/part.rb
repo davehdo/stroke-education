@@ -10,6 +10,6 @@ class Part
   field :goals_text, type: String
   
   def self.section_names
-    ["intro", "medications", "risk factors", "testing", "next steps"]
+    ["intro", "medications", "risk factors", "testing", "followup"]
   end
 end
