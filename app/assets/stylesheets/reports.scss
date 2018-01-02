@@ -10,6 +10,10 @@ $color5: #EB6E44;
 $pennblue: #2F4673;
 $pennred: #8C1127;
 
+.active[data-magellan-arrival] a {
+  background-color: $pennred !important;
+}
+
 .header-section {
   background-color: $pennred;
   h1, h2, h3, h4, h5 { color: white;}
