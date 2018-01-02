@@ -31,6 +31,18 @@
     <%= form.text_area :goals_text, id: :part_goals_text, rows: 6 %>
   </div>
 
+  <div class="field">
+    <%= form.label :embedded_html %>
+    <%= form.text_area :embedded_html, id: :part_embedded_html, rows: 6 %>
+  </div>
+
+  <div class="field">
+    <label>
+      <%= form.check_box :is_checked_by_default, id: :part_eis_checked_by_default %>
+      Is checked by default
+    </label>
+  </div>
+  
   <div class="actions">
     <%= form.submit %>
   </div>

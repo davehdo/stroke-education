@@ -8,6 +8,8 @@ class Part
   field :section, type: String
   field :description_text, type: String
   field :goals_text, type: String
+  field :is_checked_by_default, type: Boolean, default: false
+  field :embedded_html, type: String
   
   def self.section_names
     ["intro", "medications", "risk factors", "testing", "followup"]
