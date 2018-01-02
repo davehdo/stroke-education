@@ -13,6 +13,9 @@ class ReportsController < ApplicationController
   # GET /reports/new
   def new
     @report = Report.new
+    
+    # pre-assign the ones that should be checked by default
+    @report.parts << Part.where(:is_checked_by_default => true)
   end
 
   # GET /reports/1/edit
