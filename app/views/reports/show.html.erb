@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-
-<h2 class="text-center">My Stroke Information</h2>
-
+<div class="header-section">
+  <h2 class="text-center">My Stroke Information</h2>
+</div>
 
 
 <div class="dark-section">
@@ -30,7 +30,7 @@
 </div>
 
 <div class="dark-section">
-  <h4 class="text-center">My Next Steps</h4>
+  <h4 class="text-center">My Follow Up</h4>
   <%= render @report.parts.select {|e| e.section == "next steps"} %>
 </div>
 

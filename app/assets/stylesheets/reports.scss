@@ -7,8 +7,21 @@ $color3: #D3E397;
 $color4: #FFF5C3;
 $color5: #EB6E44;
 
+$pennblue: #2F4673;
+$pennred: #8C1127;
+
+.header-section {
+  background-color: $pennred;
+  h1, h2, h3, h4, h5 { color: white;}
+  padding-top: 20px; 
+  padding-bottom: 25px; 
+  
+}
+
 .dark-section {
-  background-color: $color2;
+  background-color: $pennblue;
+  color: white;
+  h1, h2, h3, h4, h5 { color: white;}
   padding-top: 20px; 
   padding-bottom: 25px; 
 }
