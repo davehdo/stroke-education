@@ -5,14 +5,16 @@
 <div class="grid-x grid-padding-x">
   <div class="cell">
 
-    <h1>Parts</h1>
+    <h1>Templated Report Sections</h1>
     <p>Each report is made of these components.</p>
+    
+    <%= link_to 'New Part', new_part_path, class: "button" %>
+    
     <table>
-
       <tbody>
         <% @parts.group_by {|e| e.section}.sort_by {|sec, ee| Part.section_names.index(sec) || 1e6}.each do |section, parts_in_section| %>
           <tr>
-            <td colspan="2" style="background-color: white; ">
+            <td colspan="3" style="background-color: white; ">
               <div class="text-center" style="margin-top: 40px; font-size: 1.4em; "><%= section %></div>
             </td>
           </tr>
@@ -46,6 +48,6 @@
 
     <br />
 
-    <%= link_to 'New Part', new_part_path %>
+    <%= link_to 'New Part', new_part_path, class: "button" %>
   </div>
 </div>

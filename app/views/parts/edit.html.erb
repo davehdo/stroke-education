@@ -1,9 +1,18 @@
-<h1>Editing Part</h1>
+<%= render "layouts/admin_nav" %>
 
-<%= render 'form', part: @part %>
+<div class="grid-x grid-padding-x" >
+  <div class="cell">
+    <h1>Editing Part</h1>
 
-<div>
-  <%= link_to 'Destroy', @part, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= render 'form', part: @part %>
+
+    <br />
+    <div>
+      <%= link_to 'Destroy', @part, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+      <%= link_to 'Back', parts_path %>
+    </div>
+
+  </div>
 </div>
 
-<%= link_to 'Back', parts_path %>
+

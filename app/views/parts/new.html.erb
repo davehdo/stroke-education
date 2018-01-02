@@ -1,5 +1,14 @@
-<h1>New Part</h1>
+<%= render "layouts/admin_nav" %>
 
-<%= render 'form', part: @part %>
+<div class="grid-x grid-padding-x" >
+  <div class="cell">
+    <h1>New Part</h1>
 
-<%= link_to 'Back', parts_path %>
+    <%= render 'form', part: @part %>
+
+    <br />
+    <%= link_to 'Back', parts_path %>
+    
+  </div>
+</div>
+
