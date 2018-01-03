@@ -35,7 +35,7 @@
 
     
 <div id="intro" class="dark-section">
-  <h3 class="text-center" data-magellan-destination="intro">Introduction</h3>
+  <h3 class="text-center" data-magellan-destination="intro">My Stroke</h3>
   <p class="text-center"><i>This information tool was custom-made for <%= @report.initials.present? ? @report.initials : "me" %> on <%= @report.created_at.strftime("%B %-m, %Y") %></i></p>
   
   <%= render @report.parts.select {|e| e.section == "intro"} %>
