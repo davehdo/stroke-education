@@ -2,9 +2,11 @@
     min-width: 100%;
     padding: 10px;">
   <dl class="sub-nav">
-    <dt>My Stroke Admin <%= current_user ? "(#{ current_user.first_name })" : "" %></dt>
+    <dt>Admin Tools <%= current_user ? "(#{ current_user.first_name })" : "" %></dt>
     <dd><%= link_to "All Reports", reports_path %></dd>
-    <dd><%= link_to "Edit Templated Report Sections", parts_path %></dd>
+    <dd><%= link_to "New Report", new_report_path %></dd>
+    <dd><%= link_to "Edit Templated Sections", parts_path %></dd>
+    <dd><%= link_to "New Templated Section", new_part_path %></dd>
     <% if user_signed_in? %>
       <dd><%= link_to "Sign Out", destroy_user_session_path, method: "DELETE" %></dd>
     <% end %>

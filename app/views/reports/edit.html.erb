@@ -7,8 +7,8 @@
     <%= render 'form', report: @report %>
     
     <br />
-    <br />
-    <%= link_to 'Show patient\'s view', @report %> |
-    <%= link_to 'Back', reports_path %>
+    <%= link_to 'Back to All Reports', reports_path %> | 
+    <%= link_to 'Destroy this report', @report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
   </div>
 </div>
