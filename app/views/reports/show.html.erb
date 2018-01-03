@@ -67,8 +67,3 @@
   <h4 class="text-center" data-magellan-destination="followup">My Follow Up</h4>
   <%= render @report.parts.select {|e| e.section == "followup"} %>
 </div>
-
-<div class="text-center" style="margin-top: 100px; ">
-  <%= link_to 'Edit', edit_report_path(@report) %> |
-  <%= link_to 'Back', reports_path %>
-</div>
