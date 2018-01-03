@@ -14,12 +14,12 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-    <!-- <% if notice || alert %>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-    <% end %> -->
+  <body>    
+    
     <div class="grid-container fluid">
+      <% if user_signed_in? %>
+        <%= render "layouts/admin_nav" %>
+      <% end %>
       <%= yield %>
     </div>
 

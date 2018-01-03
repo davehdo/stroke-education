@@ -1,6 +1,9 @@
 class PartsController < ApplicationController
   before_action :set_part, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user!
+  
+  
   # GET /parts
   def index
     @parts = Part.all
