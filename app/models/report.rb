@@ -11,7 +11,10 @@ class Report
   
   before_save :generate_key
     
-  def generate_key
-    self.key ||= (0...16).map { (65 + rand(26)).chr }.join
+  def generate_key(n_digits = 32)
+    o = [('a'..'z'), ('A'..'Z'), 1..9].map(&:to_a).flatten
+    self.key ||= string = (0...n_digits).map { o[rand(o.length)] }.join
+    
+
   end
 end
