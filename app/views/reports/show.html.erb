@@ -33,23 +33,22 @@
 
 <p id="notice"><%= notice %></p>
 
-
-
-
+    
 <div id="intro" class="dark-section">
-  <h4 class="text-center" data-magellan-destination="intro">Introduction</h4>
+  <h3 class="text-center" data-magellan-destination="intro">Introduction</h3>
+  <p class="text-center"><i>This information tool was custom-made for <%= @report.initials.present? ? @report.initials : "me" %> on <%= @report.created_at.strftime("%B %-m, %Y") %></i></p>
   
   <%= render @report.parts.select {|e| e.section == "intro"} %>
 </div>
 
 <div id="risk_factors" class="light-section">
-  <h4 class="text-center" data-magellan-destination="risk_factors">My Risk Factors</h4>
+  <h3 class="text-center" data-magellan-destination="risk_factors">My Risk Factors</h3>
   
   <%= render @report.parts.select {|e| e.section == "risk factors"} %>
 </div>
 
 <div id="medications" class="dark-section">
-  <h4 class="text-center" data-magellan-destination="medications">My Medications</h4>
+  <h3 class="text-center" data-magellan-destination="medications">My Medications</h3>
 
   <p class="text-center">(Just the stroke ones)</p>
   <%= render @report.parts.select {|e| e.section == "medications"} %>
@@ -59,11 +58,11 @@
 
 
 <div id="testing" class="light-section">
-  <h4 class="text-center" data-magellan-destination="testing">My Upcoming Testing</h4>
+  <h3 class="text-center" data-magellan-destination="testing">My Upcoming Testing</h3>
   <%= render @report.parts.select {|e| e.section == "testing"} %>
 </div>
 
 <div id="followup" class="dark-section">
-  <h4 class="text-center" data-magellan-destination="followup">My Follow Up</h4>
+  <h3 class="text-center" data-magellan-destination="followup">My Follow Up</h3>
   <%= render @report.parts.select {|e| e.section == "followup"} %>
 </div>
