@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
   resources :reports
   resources :parts
-  
-  namespace :api do
-    namespace :v1 do
-      resources :trips, except: [:new, :update, :edit]
-      resources :users, only: [:index]
-    end
-  end
+    #
+  # namespace :api do
+  #   namespace :v1 do
+  #     resources :trips, except: [:new, :update, :edit]
+  #     resources :users, only: [:index]
+  #   end
+  # end
 
   devise_for :users
   
