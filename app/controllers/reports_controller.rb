@@ -11,7 +11,8 @@ class ReportsController < ApplicationController
   # GET /reports/1
   def show
     if params[:key] == @report.key # its a real user
-      # TODO keep statistics of number of times accessed
+      # keep statistics of number of times accessed
+      @report.record_access
     else
       authenticate_user!  
     end

@@ -6,7 +6,7 @@ class Report
   
   field :initials, type: String
   field :link_delivered_at, type: DateTime
-  field :accessed_at, type: DateTime
+  field :accessed_at, type: Array
   field :key, type: String
   
   before_save :generate_key
@@ -14,7 +14,9 @@ class Report
   def generate_key(n_digits = 32)
     o = [('a'..'z'), ('A'..'Z'), 1..9].map(&:to_a).flatten
     self.key ||= string = (0...n_digits).map { o[rand(o.length)] }.join
-    
-
+  end
+  
+  def record_access
+    update_attribute :accessed_at, ((self.accessed_at || []) + [Time.now])
   end
 end
