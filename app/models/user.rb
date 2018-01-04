@@ -3,6 +3,8 @@ class User
   include Mongoid::Timestamps
   # has_many :trips
   
+  has_many :reports, inverse_of: :creator
+  
   field :first_name, type: String
   field :last_name, type: String
   field :email, type: String

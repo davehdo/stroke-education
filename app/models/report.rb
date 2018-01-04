@@ -4,6 +4,8 @@ class Report
 
   has_and_belongs_to_many :parts
   
+  belongs_to :creator, class_name: "User"
+  
   field :initials, type: String
   field :link_delivered_at, type: DateTime
   field :accessed_at, type: Array
