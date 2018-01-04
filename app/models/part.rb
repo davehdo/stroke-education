@@ -5,6 +5,7 @@ class Part
   has_and_belongs_to_many :reports
   
   field :name, type: String
+  field :annotation, type: String # hidden from the end user
   field :section, type: String
   field :description_text, type: String
   field :goals_text, type: String

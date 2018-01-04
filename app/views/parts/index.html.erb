@@ -29,7 +29,7 @@
               <td><% if part.is_checked_by_default %>
                 <i class="fa fa-check" aria-hidden="true"></i> 
                 <% end %>
-                <%= link_to part.name, part_path(part) %> 
+                <%= link_to (part.name.present? ? part.name : part.annotation), part_path(part) %> 
                 (<%= link_to "Edit", edit_part_path(part) %>)
               </td>
               <td>

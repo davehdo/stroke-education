@@ -24,7 +24,8 @@
           <label>
             <%# check_box_tag(name, value = "1", checked = false, options = {}) public %>
             <%= check_box_tag "report[part_ids][]", part.to_param, report.parts.include?(part) %>
-            <%= part.name %>
+            <%= part.name %> 
+            <i style="color: gray;"><%= part.annotation %></i>
           </label>
       </div>
     <% end %>

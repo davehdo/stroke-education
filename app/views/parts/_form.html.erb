@@ -12,8 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, "Name (The patient sees this; optional)" %>
     <%= form.text_field :name, id: :part_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :annotation, "Annotation (The patient does NOT see this)" %>
+    <%= form.text_field :annotation, id: :part_annotation %>
   </div>
 
   <div class="field">
@@ -28,12 +33,12 @@
 
   <div class="field">
     <%= form.label :goals_text %>
-    <%= form.text_area :goals_text, id: :part_goals_text, rows: 6 %>
+    <%= form.text_area :goals_text, id: :part_goals_text, rows: 5 %>
   </div>
 
   <div class="field">
-    <%= form.label :embedded_html %>
-    <%= form.text_area :embedded_html, id: :part_embedded_html, rows: 6 %>
+    <%= form.label :embedded_html, "Embedded HTML (For images or videos)" %>
+    <%= form.text_area :embedded_html, id: :part_embedded_html, rows: 5 %>
   </div>
 
   <div class="field">
