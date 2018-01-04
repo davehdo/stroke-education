@@ -29,7 +29,7 @@ RSpec.describe ReportsController, type: :controller do
   # Report. As you add validations to Report, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {}
+    {initials: "AA"}
   }
 
   let(:invalid_attributes) {
@@ -141,12 +141,24 @@ RSpec.describe ReportsController, type: :controller do
   end
 
   describe "POST #create" do
-    context "with valid params" do
+    context "with valid signed in user" do
+      before :each do 
+        @user = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
       it "creates a new Report" do
         expect {
           post :create, params: {report: valid_attributes}, session: valid_session
         }.to change(Report, :count).by(1)
       end
+
+      it "assigns signed in user as creator" do
+        expect {
+          post :create, params: {report: valid_attributes}, session: valid_session
+        }.to change(Report, :count).by(1)
+      end
+
 
       it "redirects to the created report" do
         post :create, params: {report: valid_attributes}, session: valid_session
@@ -154,56 +166,100 @@ RSpec.describe ReportsController, type: :controller do
       end
     end
 
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
+    context "with no signed in user" do
+      before :each do 
+        @user = FactoryGirl.create(:user)
+      end
+
+      it "redirects to login" do
         post :create, params: {report: invalid_attributes}, session: valid_session
-        expect(response).to be_success
+        expect(response).to redirect_to( new_user_session_path )
       end
     end
   end
 
   describe "PUT #update" do
-    context "with valid params" do
+    
+    context "with valid login" do
+      before :each do 
+        @user = FactoryGirl.create(:user)
+        sign_in @user
+      end
+      
+      
       let(:new_attributes) {
         skip("Add a hash of attributes valid for your model")
       }
 
       it "updates the requested report" do
-        report = Report.create! valid_attributes
+        report = @user.reports.create! valid_attributes
         put :update, params: {id: report.to_param, report: new_attributes}, session: valid_session
         report.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the report" do
-        report = Report.create! valid_attributes
+        report = @user.reports.create! valid_attributes
         put :update, params: {id: report.to_param, report: valid_attributes}, session: valid_session
         expect(response).to redirect_to(report)
       end
     end
 
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        report = Report.create! valid_attributes
+    context "with invalid login" do
+      before :each do 
+        @user = FactoryGirl.create(:user)
+      end
+      
+      it "redirects to login page" do
+        report = @user.reports.create! valid_attributes
         put :update, params: {id: report.to_param, report: invalid_attributes}, session: valid_session
-        expect(response).to be_success
+        expect(response).to redirect_to( new_user_session_path )
+        
       end
     end
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested report" do
-      report = Report.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: report.to_param}, session: valid_session
-      }.to change(Report, :count).by(-1)
-    end
+    context "when signed in" do
+      before :each do 
+        @user = FactoryGirl.create(:user)
+        sign_in @user
+      end
+    
+      it "destroys the requested report" do
+        report = @user.reports.create! valid_attributes
+        expect {
+          delete :destroy, params: {id: report.to_param}, session: valid_session
+        }.to change(Report, :count).by(-1)
+      end
 
-    it "redirects to the reports list" do
-      report = Report.create! valid_attributes
-      delete :destroy, params: {id: report.to_param}, session: valid_session
-      expect(response).to redirect_to(reports_url)
+      it "redirects to the reports list" do
+        report = @user.reports.create! valid_attributes
+        delete :destroy, params: {id: report.to_param}, session: valid_session
+        expect(response).to redirect_to(reports_url)
+      end
     end
+    
+    context "when not signed in" do
+      before :each do 
+        @user = FactoryGirl.create(:user)
+      end
+    
+      it "destroys the requested report" do
+        report = @user.reports.create! valid_attributes
+        delete :destroy, params: {id: report.to_param}, session: valid_session
+        
+        expect(response).to redirect_to( new_user_session_path )
+        
+      end
+
+      it "redirects to the reports list" do
+        report = @user.reports.create! valid_attributes
+        delete :destroy, params: {id: report.to_param}, session: valid_session
+        expect(response).to redirect_to( new_user_session_path )
+      end
+    end
+    
   end
 
 end

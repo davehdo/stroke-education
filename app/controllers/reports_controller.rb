@@ -32,9 +32,13 @@ class ReportsController < ApplicationController
 
   # POST /reports
   def create
+    if user_signed_in?
+      @report = current_user.reports.new(report_params)
+    else
+      @report = Report.new(report_params)
+      
+    end
     
-    @report = Report.new(report_params)
-
     if @report.save
       redirect_to @report, notice: 'Report was successfully created.'
     else
