@@ -15,4 +15,13 @@ class Part
   def self.section_names
     ["intro", "risk factors", "medications", "testing", "followup"]
   end
+  
+  validate :ensure_has_name_or_annotation
+  
+  
+  def ensure_has_name_or_annotation
+    unless self.name.present? or self.annotation.present?
+      self.errors.add(:name, "or annotation must be present")
+    end
+  end
 end

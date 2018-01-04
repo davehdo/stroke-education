@@ -1,7 +1,7 @@
 <%= form_with(model: part, local: true) do |form| %>
   <% if part.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(part.errors.count, "error") %> prohibited this part from being saved:</h2>
+    <div id="error_explanation" class="panel">
+      <p><%= pluralize(part.errors.count, "error") %> prohibited this part from being saved:</p>
 
       <ul>
       <% part.errors.full_messages.each do |message| %>
@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :annotation, "Annotation (The patient does NOT see this)" %>
-    <%= form.text_field :annotation, id: :part_annotation %>
+    <%= form.text_field :annotation, id: :part_annotation, placeholder: "e.g. with short video clip" %>
   </div>
 
   <div class="field">
@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= form.label :goals_text %>
-    <%= form.text_area :goals_text, id: :part_goals_text, rows: 5 %>
+    <%= form.text_area :goals_text, id: :part_goals_text, rows: 5, placeholder: "e.g. make a plan with my primary doctor" %>
   </div>
 
   <div class="field">
