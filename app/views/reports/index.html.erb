@@ -29,7 +29,7 @@
             <td>
               <%= link_to "Patient #{ report.initials }", report %>
             </td>
-            <td><%= time_ago_in_words report.created_at %> ago</td>
+            <td><%= time_ago_in_words report.created_at %> ago <%= "by #{report.creator.display_name}" if report.creator %></td>
             <td><div style="max-width: 150px; overflow: hidden; ">
               <code>
                 <small><%= request.env["HTTP_HOST"] %><%= url_for( report ) %>?key=<%= report.key %></small>
