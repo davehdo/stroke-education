@@ -29,11 +29,11 @@ RSpec.describe ReportsController, type: :controller do
   # Report. As you add validations to Report, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -42,33 +42,101 @@ RSpec.describe ReportsController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
+    before :each do 
+      @user = FactoryGirl.create(:user)
+    end
+    
     it "returns a success response" do
-      report = Report.create! valid_attributes
+      report = @user.reports.create! valid_attributes
+      get :index, params: {}, session: valid_session
+      expect(response).to redirect_to( new_user_session_path )
+      # expect(response.body).to include( "Using this link, patient can access" )
+      
+    end
+    
+    it "returns a success response when signed in" do
+      report = @user.reports.create! valid_attributes
+      
+      sign_in @user
+      
       get :index, params: {}, session: valid_session
       expect(response).to be_success
+      expect(response).to_not redirect_to( new_user_session_path )
+      
+      # expect(response.body).to include( "Using this link, patient can access" )
     end
   end
 
   describe "GET #show" do
+    before :each do 
+      @user = FactoryGirl.create(:user)
+    end
+    
     it "returns a success response" do
-      report = Report.create! valid_attributes
+      report = @user.reports.create! valid_attributes
+      get :show, params: {id: report.to_param}, session: valid_session
+      expect(response).to redirect_to( new_user_session_path )
+    end
+
+    it "returns a success response when accessing with valid key" do
+      report = @user.reports.create! valid_attributes
+      get :show, params: {id: report.to_param, key: report.key}, session: valid_session
+      expect(response).to_not redirect_to( new_user_session_path )
+    end
+
+
+    it "returns a success response when signed in" do
+      report = @user.reports.create! valid_attributes
+      
+      sign_in @user
+      
       get :show, params: {id: report.to_param}, session: valid_session
       expect(response).to be_success
+      expect(response).to_not redirect_to( new_user_session_path )
     end
+
   end
 
   describe "GET #new" do
+    before :each do 
+      @user = FactoryGirl.create(:user)
+    end
+
     it "returns a success response" do
       get :new, params: {}, session: valid_session
-      expect(response).to be_success
+      expect(response).to redirect_to( new_user_session_path )
     end
+
+    it "returns a success response if signed in" do
+      sign_in @user
+      
+      get :new, params: {}, session: valid_session
+      expect(response).to be_success
+      expect(response).to_not redirect_to( new_user_session_path )
+    end
+
   end
 
   describe "GET #edit" do
+    before :each do 
+      @user = FactoryGirl.create(:user)
+    end
+
     it "returns a success response" do
-      report = Report.create! valid_attributes
+      report = @user.reports.create! valid_attributes
       get :edit, params: {id: report.to_param}, session: valid_session
+      expect(response).to redirect_to( new_user_session_path )
+    end
+    
+    it "returns a success response when signed in" do
+      report = @user.reports.create! valid_attributes
+      sign_in @user
+      
+      get :edit, params: {id: report.to_param}, session: valid_session
+      
       expect(response).to be_success
+      expect(response).to_not redirect_to( new_user_session_path )
+      
     end
   end
 
