@@ -3,7 +3,8 @@
 
 
     <% parts_in_section.each do |part| %>
-      <li class="<%= "active" if  @part == part %>"><%= link_to(  (part.name.present? ? part.name : part.annotation), part_path(part)) %></li>
+      <li class="<%= "active" if  @part == part %>"><%= link_to(  "#{part.name.present? ? part.name : "Untitled"} #{               "<span class=\"label secondary\">#{ part.annotation } #{ part.reports.size }</span>"
+}".html_safe, part_path(part)) %></li>
   
     <% end %>
     <li class="divider"></li>
