@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :initials %>
+    <%= form.label :initials, "Recipient initials" %>
     <%= form.text_field :initials %>
   </div>
 
   <% Part.all.sort_by {|e| Part.section_names.index(e.section) || 1e6}.group_by {|e| e.section}.each do |section, parts_for_section| %>
     <h5><%= section %></h5>
-    <% parts_for_section.each do |part| %>
-      <div>
+    <div>
+      <% parts_for_section.sort_by {|part| part.reports.size}.reverse.each do |part| %>
+            <label style="display: inline; margin-right: 10px; ">
+              <%# check_box_tag(name, value = "1", checked = false, options = {}) public %>
+              <%= check_box_tag "report[part_ids][]", part.to_param, report.parts.include?(part) %>
+              <%= part.name.present? ? part.name : "Unnamed" %>
+              <span class="label secondary"><%= part.reports.size %></span>
 
-          <label>
-            <%# check_box_tag(name, value = "1", checked = false, options = {}) public %>
-            <%= check_box_tag "report[part_ids][]", part.to_param, report.parts.include?(part) %>
-            <%= part.name %> 
-            <i style="color: gray;"><%= part.annotation %></i>
-          </label>
-      </div>
-    <% end %>
+            </label>
+      <% end %>
+    </div>
   <% end %>
   
   <div class="actions">
