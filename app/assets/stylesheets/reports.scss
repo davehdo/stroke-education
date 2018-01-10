@@ -10,8 +10,8 @@ $color5: #EB6E44;
 $pennblue: #2F4673;
 $pennred: #8C1127;
 
-
-
+// larger base font size for readability
+body, p, li, td { font-size:18px; }
 
 .active[data-magellan-arrival] a {
   background-color: $pennred !important;
