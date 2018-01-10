@@ -20,11 +20,11 @@
     <h5><%= section %></h5>
     <div>
       <% parts_for_section.sort_by {|part| part.reports.size}.reverse.each do |part| %>
-            <label style="display: inline; margin-right: 10px; ">
+            <label style="display: inline; margin-right: 10px; white-space: nowrap; ">
               <%# check_box_tag(name, value = "1", checked = false, options = {}) public %>
               <%= check_box_tag "report[part_ids][]", part.to_param, report.parts.include?(part) %>
-              <%= part.name.present? ? part.name : "Unnamed" %>
-              <span class="label secondary"><%= part.reports.size %></span>
+              <%= part.name.present? ? part.name : "Untitled" %>
+              <span class="label secondary"><%= part.annotation %> <%= part.reports.size %></span>
 
             </label>
       <% end %>
