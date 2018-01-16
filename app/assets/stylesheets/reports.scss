@@ -11,7 +11,11 @@ $pennblue: #2F4673;
 $pennred: #8C1127;
 
 // larger base font size for readability
-body, p, li, td { font-size:18px; }
+body, p, li, td { font-size: 24px; }
+
+h1 { font-size: 41px; }
+h2 { font-size: 35px; }
+h3 { font-size: 29px; }
 
 .active[data-magellan-arrival] a {
   background-color: $pennred !important;
