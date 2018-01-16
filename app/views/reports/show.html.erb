@@ -11,11 +11,6 @@
 </div>
 
 
-<style type="text/css" media="screen">
-  body {
-    background-color: #333;
-  }
-</style>
 
 <script type="text/javascript">
   $(document).foundation({
@@ -29,9 +24,6 @@
   }
   });
 </script>
-
-
-<p id="notice"><%= notice %></p>
 
     
 <div class="dark-section">
@@ -52,9 +44,7 @@
   <br />
   <div class="callout primary text-center"><i class="fa fa-flask" aria-hidden="true"></i>  Just the stroke ones are listed here. Upon discharge, the nurse will review my complete medication list with me.</div>
   <%= render "parts/parts", parts: @report.parts.select {|e| e.section == "medications"} %>
-  
 </div>
-
 
 <div class="light-section">
   <h3 id="testing" class="text-center" data-magellan-destination="testing">My Upcoming Testing</h3>
@@ -66,6 +56,4 @@
   <%= render "parts/parts", parts: @report.parts.select {|e| e.section == "followup"} %>
 </div>
 
-<div class="dark-section" style=" padding-top: 50px; padding-bottom: 50px; ">
-  
-</div>
+<div class="dark-section" style=" padding-top: 50px; padding-bottom: 50px; "><!-- buffer at the bottom of page --></div>
