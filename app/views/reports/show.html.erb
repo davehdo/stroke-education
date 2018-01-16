@@ -38,34 +38,34 @@
   <h3 id="intro" class="text-center" data-magellan-destination="intro">My Stroke</h3>
   <p class="text-center"><i>This information tool was custom-made for <%= @report.initials.present? ? @report.initials : "me" %> on <%= @report.created_at.strftime("%B %-m, %Y") %></i></p>
   
-  <%= render @report.parts.select {|e| e.section == "intro"} %>
+  <%= render "parts/parts", parts: @report.parts.select {|e| e.section == "intro"} %>
 </div>
 
 <div class="light-section">
   <h3 id="risk_factors" class="text-center" data-magellan-destination="risk_factors">My Risk Factors</h3>
   
-  <%= render @report.parts.select {|e| e.section == "risk factors"} %>
+  <%= render "parts/parts", parts: @report.parts.select {|e| e.section == "risk factors"} %>
 </div>
 
 <div  class="dark-section">
   <h3 id="medications" class="text-center" data-magellan-destination="medications">My Stroke-Prevention Medications</h3>
   <br />
   <div class="callout primary text-center"><i class="fa fa-flask" aria-hidden="true"></i>  Just the stroke ones are listed here. Upon discharge, the nurse will review my complete medication list with me.</div>
-  <%= render @report.parts.select {|e| e.section == "medications"} %>
+  <%= render "parts/parts", parts: @report.parts.select {|e| e.section == "medications"} %>
   
 </div>
 
 
 <div class="light-section">
   <h3 id="testing" class="text-center" data-magellan-destination="testing">My Upcoming Testing</h3>
-  <%= render @report.parts.select {|e| e.section == "testing"} %>
+  <%= render "parts/parts", parts: @report.parts.select {|e| e.section == "testing"} %>
 </div>
 
 <div class="dark-section">
   <h3 id="followup" class="text-center" data-magellan-destination="followup">My Follow Up</h3>
-  <%= render @report.parts.select {|e| e.section == "followup"} %>
+  <%= render "parts/parts", parts: @report.parts.select {|e| e.section == "followup"} %>
 </div>
 
-<div style="background-color: black; padding-top: 50px; padding-bottom: 50px; ">
+<div class="dark-section" style=" padding-top: 50px; padding-bottom: 50px; ">
   
 </div>
