@@ -8,6 +8,8 @@
   
     <h1>Reports</h1>
 
+    <%= paginate @reports %>
+    
     <table>
       <thead>
         <tr>
@@ -52,6 +54,8 @@
         <% end %>
       </tbody>
     </table>
+    
+    <%= paginate @reports %>
     
     <br />
 
