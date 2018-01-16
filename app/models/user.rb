@@ -23,7 +23,8 @@ class User
 
   field :will_save_change_to_email?, type: Boolean
   
-
+  field :admin, type: Boolean
+  
   validates_presence_of :first_name
   validates_presence_of :last_name
   

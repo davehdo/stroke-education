@@ -5,7 +5,11 @@ class ReportsController < ApplicationController
 
   # GET /reports
   def index
-    @reports = Report.desc(:created_at).page(params[:page])
+    if current_user.admin
+      @reports = Report.desc(:created_at).page(params[:page])
+    else
+      @reports = current_user.reports.desc(:created_at).page(params[:page])
+    end
   end
 
   # GET /reports/1
