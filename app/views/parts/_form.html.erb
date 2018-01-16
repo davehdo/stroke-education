@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :name, "Name (The patient sees this; optional)" %>
-    <%= form.text_field :name, id: :part_name %>
+    <%= form.text_field :name, id: :part_name, placeholder: "Avoid names with all caps" %>
   </div>
 
   <div class="field">
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :description_text %>
-    <%= form.text_area :description_text, id: :part_description_text, rows: 6 %>
+    <%= form.text_area :description_text, id: :part_description_text, rows: 6, placeholder: "Avoid names with all caps" %>
   </div>
 
   <div class="field">
@@ -37,7 +37,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :embedded_html, "Embedded HTML (For images or videos)" %>
+    <%= form.label :embedded_html, "Embedded HTML (For images or videos, try to make width ~380)" %>
     <%= form.text_area :embedded_html, id: :part_embedded_html, rows: 5 %>
   </div>
 
