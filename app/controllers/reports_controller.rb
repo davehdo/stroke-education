@@ -48,6 +48,10 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1
   def update
+    unless @report.creator
+      @report.assign_attributes(creator: current_user)
+    end
+    
     if @report.update(report_params)
       redirect_to @report, notice: 'Report was successfully updated.'
     else
