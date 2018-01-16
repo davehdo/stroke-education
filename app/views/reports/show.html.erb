@@ -48,11 +48,10 @@
 </div>
 
 <div  class="dark-section">
-  <h3 id="medications" class="text-center" data-magellan-destination="medications">My Medications</h3>
-
-  <p class="text-center">(Just the stroke ones)</p>
+  <h3 id="medications" class="text-center" data-magellan-destination="medications">My Stroke-Prevention Medications</h3>
+  <br />
+  <div class="callout primary text-center"><i class="fa fa-flask" aria-hidden="true"></i>  Just the stroke ones are listed here. Upon discharge, the nurse will review my complete medication list with me.</div>
   <%= render @report.parts.select {|e| e.section == "medications"} %>
-  <p class="text-center">Upon discharge, the nurse will review my complete medication list with me.</p>
   
 </div>
 
