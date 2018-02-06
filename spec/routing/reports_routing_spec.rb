@@ -4,35 +4,35 @@ RSpec.describe ReportsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/r").to route_to("reports#index")
+      expect(:get => "/reports").to route_to("reports#index")
     end
 
     it "routes to #new" do
-      expect(:get => "/r/new").to route_to("reports#new")
+      expect(:get => "/reports/new").to route_to("reports#new")
     end
 
     it "routes to #show" do
-      expect(:get => "/r/1").to route_to("reports#show", :id => "1")
+      expect(:get => "/reports/1").to route_to("reports#show", :id => "1")
     end
 
     it "routes to #edit" do
-      expect(:get => "/r/1/edit").to route_to("reports#edit", :id => "1")
+      expect(:get => "/reports/1/edit").to route_to("reports#edit", :id => "1")
     end
 
     it "routes to #create" do
-      expect(:post => "/r").to route_to("reports#create")
+      expect(:post => "/reports").to route_to("reports#create")
     end
 
     it "routes to #update via PUT" do
-      expect(:put => "/r/1").to route_to("reports#update", :id => "1")
+      expect(:put => "/reports/1").to route_to("reports#update", :id => "1")
     end
 
     it "routes to #update via PATCH" do
-      expect(:patch => "/r/1").to route_to("reports#update", :id => "1")
+      expect(:patch => "/reports/1").to route_to("reports#update", :id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/r/1").to route_to("reports#destroy", :id => "1")
+      expect(:delete => "/reports/1").to route_to("reports#destroy", :id => "1")
     end
 
   end
