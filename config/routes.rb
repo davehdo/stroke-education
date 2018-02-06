@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
   resources :reports
+  
+  # resources :reports, only: [], path: "r/" do
+  #   collection do
+  #     get :show_by_key, path: "/"
+  #   end
+  # end
   resources :parts
+  
+  get "r/:key" => "reports#show_by_key", as: "show_by_key_reports"
     #
   # namespace :api do
   #   namespace :v1 do

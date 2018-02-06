@@ -36,7 +36,7 @@
               <% (report.keys || []).each_with_index do |key, index| %>
               <span class="contain-link">
                 <input id="link-for-<%= report.to_param %>-<%= index %>" 
-                  value="http://<%= request.env["HTTP_HOST"] %>/r/<%= key %>"
+                  value="http://<%= request.env["HTTP_HOST"] %><%= show_by_key_reports_path( key) %>"
                   style="width: 200px; display: inline; font-size: 8px; 
                     border: none; background-color: transparent; padding: 0px; margin: 0px; " />
                 <a href="#" onclick="copyLinkFor('<%= report.to_param %>-<%= index %>')">Copy #<%= index + 1 %></a> 

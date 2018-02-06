@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
 
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show_by_key]
 
   # GET /reports
   def index
@@ -13,15 +13,22 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1
+  # authenticated users access through here
   def show
-    if params[:key] == @report.key # its a real user
-      # keep statistics of number of times accessed
-      @report.record_access
-    else
-      authenticate_user!  
-    end
   end
 
+  # GET /r/12345
+  # patients access through here
+  def show_by_key
+    if params[:key] and (@report = Report.where(keys: params[:key]).limit(1).first)
+      # keep statistics of number of times accessed
+      @report.record_access
+      render :show
+    else
+      render inline: "Need a key to access this page", status: 401 
+    end
+  end
+  
   # GET /reports/new
   def new
     @report = Report.new

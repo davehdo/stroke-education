@@ -73,17 +73,17 @@ RSpec.describe ReportsController, type: :controller do
       @user = FactoryGirl.create(:user)
     end
     
-    it "returns a success response" do
+    it "redirects to sign in" do
       report = @user.reports.create! valid_attributes
       get :show, params: {id: report.to_param}, session: valid_session
       expect(response).to redirect_to( new_user_session_path )
     end
-
-    it "returns a success response when accessing with valid key" do
-      report = @user.reports.create! valid_attributes
-      get :show, params: {id: report.to_param, key: report.key}, session: valid_session
-      expect(response).to_not redirect_to( new_user_session_path )
-    end
+    #
+    # it "returns a success response when accessing with valid key" do
+    #   report = @user.reports.create! valid_attributes
+    #   get :show, params: {id: report.to_param, key: report.key}, session: valid_session
+    #   expect(response).to_not redirect_to( new_user_session_path )
+    # end
 
 
     it "returns a success response when signed in" do
@@ -98,6 +98,43 @@ RSpec.describe ReportsController, type: :controller do
 
   end
 
+
+  describe "GET #show_by_key" do
+    before :each do 
+      @user = FactoryGirl.create(:user)
+    end
+    
+
+    it "returns a success response when accessing with valid key" do
+      report = @user.reports.create! valid_attributes
+      get :show_by_key, params: { key: report.keys[0]}, session: valid_session
+      expect(response).to be_success
+      expect(response).to_not redirect_to( new_user_session_path )
+    end
+
+    # it "assigns correct report" do
+    #   report = @user.reports.create! valid_attributes
+    #   get :show_by_key, params: {key: report.keys[0], session: valid_session
+    #   expect(assigns(:report)).to eq( report )
+    # end
+
+    it "returns a permission denied 401 when there is no key (no sign in)" do
+      report = @user.reports.create! valid_attributes
+      get :show_by_key, params: {}, session: valid_session
+      expect(response.status).to eq(401)
+    end
+
+    it "returns a permission denied 401 when there is no key (signed in)" do
+      report = @user.reports.create! valid_attributes
+      
+      sign_in @user
+      
+      get :show_by_key, params: {}, session: valid_session
+      expect(response.status).to eq(401)
+    end
+
+  end
+  
   describe "GET #new" do
     before :each do 
       @user = FactoryGirl.create(:user)
