@@ -9,13 +9,13 @@ class Report
   field :initials, type: String
   field :link_delivered_at, type: DateTime
   field :accessed_at, type: Array
-  field :key, type: String
+  field :keys, type: Array
   
-  before_save :generate_key
+  before_save :generate_keys
     
-  def generate_key(n_digits = 32)
+  def generate_keys(n_digits = 16)
     o = [('a'..'z'), ('A'..'Z'), 1..9].map(&:to_a).flatten
-    self.key ||= string = (0...n_digits).map { o[rand(o.length)] }.join
+    self.keys ||= (1..5).collect {|n| (0...n_digits).map { o[rand(o.length)] }.join}
   end
   
   def record_access
