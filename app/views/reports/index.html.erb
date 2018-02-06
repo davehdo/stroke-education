@@ -33,11 +33,16 @@
             </td>
             <td><%= time_ago_in_words report.created_at %> ago <%= "by #{report.creator.display_name}" if report.creator %></td>
             <td>
-                <input id="link-for-<%= report.to_param %>" 
-                  value="http://<%= request.env["HTTP_HOST"] %><%= url_for( report ) %>?key=<%= report.key %>"
-                  style="width: 150px; display: inline; " />
-                <a href="#" onclick="copyLinkFor('<%= report.to_param %>')">Copy</a> 
+              <% (report.keys || []).each_with_index do |key, index| %>
+              <span class="contain-link">
+                <input id="link-for-<%= report.to_param %>-<%= index %>" 
+                  value="http://<%= request.env["HTTP_HOST"] %>/r/<%= key %>"
+                  style="width: 200px; display: inline; font-size: 8px; 
+                    border: none; background-color: transparent; padding: 0px; margin: 0px; " />
+                <a href="#" onclick="copyLinkFor('<%= report.to_param %>-<%= index %>')">Copy #<%= index + 1 %></a> 
                 <span class="checkmark"><i class="fa fa-check" aria-hidden="true"></i></span>
+              </span>
+              <% end %>
             </td>
             <td>
               <% if report.accessed_at %>
@@ -67,8 +72,8 @@
 <script type="text/javascript">
   const copyLinkFor = (id) => {                  
     let copyText = $(`#link-for-${ id }`);
-    $("td.copied").removeClass("copied")
-    copyText.closest("td").addClass("copied")
+    $("span.copied").removeClass("copied")
+    copyText.closest("span.contain-link").addClass("copied")
     copyText.select();
     document.execCommand("Copy");
   }
@@ -77,5 +82,5 @@
 
 <style type="text/css" media="screen">
   .checkmark {display: none;}
-  td.copied .checkmark {display: inline;}
+  span.copied .checkmark {display: inline;}
 </style>
