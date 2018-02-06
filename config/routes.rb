@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :reports, path: "r" # name it r to shorten the URLs
-  
+  resources :reports
   resources :parts
     #
   # namespace :api do

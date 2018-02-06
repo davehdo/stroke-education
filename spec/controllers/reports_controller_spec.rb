@@ -24,7 +24,8 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe ReportsController, type: :controller do
-
+  render_views
+  
   # This should return the minimal set of attributes required to create a valid
   # Report. As you add validations to Report, be sure to
   # adjust the attributes here as well.
