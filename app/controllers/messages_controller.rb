@@ -18,8 +18,16 @@ class MessagesController < ApplicationController
   end
 
   # GET /messages/new
+  # this is nested within report
   def new
-    @message = Message.new
+    @reports = Report.find( params[:report_id])
+    
+    message = Message.prototypes.find {|e| e[:category] == params[:message_category].to_i}
+
+    @message = @reports.messages.new( 
+      message_category: params[:message_category], 
+      text: message ? message[:text] : nil
+    )
   end
 
   # GET /messages/1/edit
@@ -28,7 +36,9 @@ class MessagesController < ApplicationController
 
   # POST /messages
   def create
-    @message = Message.new(message_params)
+    @reports = Report.find( message_params[:report_id])
+
+    @message = @reports.messages.new(message_params)
 
     if @message.save
       redirect_to @message, notice: 'Message was successfully created.'

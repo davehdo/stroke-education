@@ -40,15 +40,15 @@
             %>
             <% Message.prototypes.each do |m| %>
               <td>
-                a
-                <% messages_by_category[m[:category]] || [].each do |message| %>
+                
+                <% (messages_by_category[m[:category]] || []).each do |message| %>
                   <div><%= link_to "Msg created for son 3/2 (Opened)", message %></div>
-                  <div><%= link_to "Create New", new_message_path %></div>
                 <% end %>
+                <div><%= link_to "Create New", "#{new_report_message_path(report_id: report.to_param)}?message_category=#{m[:category]}" %></div>
               </td>
               
             <% end %>
-            <td>
+            
 <% if false %>
             <td>
               <% (report.keys || []).each_with_index do |key, index| %>
@@ -89,4 +89,4 @@
 </div><!-- /grid -->
 
 
-<%= link_to 'New Message', new_message_path %>
+

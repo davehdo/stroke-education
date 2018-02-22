@@ -7,7 +7,7 @@ class Message
   
   def self.prototypes
     [  
-      {description: "Day 0", category: 1, text: "Please click here to find your personalized stroke app"},
+      {description: "Day 0", category: 1, text: "Please click here to find your personalized stroke app [URL]"},
       {description: "Day 1", category: 2, text: "Please click here to review your stroke prevention medications"},
       {description: "Day 4", category: 3, text: "Please click here to review the cause of your stroke"},
       {description: "Day 7", category: 4, text: "Please click here to review your stroke risk factors"},

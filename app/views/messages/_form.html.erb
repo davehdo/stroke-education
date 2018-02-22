@@ -11,24 +11,24 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+    <%= form.label :recipient, "Recipient alias" %> 
+    <%= form.text_field :recipient, id: :message_recipient, placeholder: "e.g. son 1, daughter 3" %>
+  </div>
+  
   <div class="field">
     <%= form.label :text %>
-    <%= form.text_field :text, id: :message_text %>
+    <%= form.text_area :text, id: :message_text %>
+  </div>
+
+
+  <div class="field">
+    <%= form.hidden_field :report_id, id: :message_report_id %>
   </div>
 
   <div class="field">
-    <%= form.label :recipient %>
-    <%= form.text_field :recipient, id: :message_recipient %>
-  </div>
-
-  <div class="field">
-    <%= form.label :report_id %>
-    <%= form.text_field :report_id, id: :message_report_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :message_category %>
-    <%= form.number_field :message_category, id: :message_message_category %>
+    <%= form.hidden_field :message_category, id: :message_message_category %>
   </div>
 
   <div class="actions">

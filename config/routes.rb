@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :messages
-  resources :reports
+  resources :messages, only: [:index, :create, :show, :edit]
+  
+  resources :reports do
+    resources :messages, only: [:new]
+  end
   
   # resources :reports, only: [], path: "r/" do
   #   collection do
