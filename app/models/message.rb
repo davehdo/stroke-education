@@ -1,5 +1,7 @@
 class Message
   include Mongoid::Document
+  include Mongoid::Timestamps
+  
   field :text, type: String
   field :recipient, type: String
   field :message_category, type: Integer
@@ -19,6 +21,9 @@ class Message
     self.key ||= (0...n_digits).map { o[rand(o.length)] }.join
   end
   
+  def has_been_accessed
+    self.accessed_at and self.accessed_at.size > 0
+  end
   
   def self.prototypes
     [  

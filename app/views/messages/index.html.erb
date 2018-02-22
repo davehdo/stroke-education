@@ -22,6 +22,7 @@
           <% Message.prototypes.each do |m| %>
             <th><%= m[:description]%></th>
           <% end %>
+          <th></th>
         </tr>
       </thead>
 
@@ -40,40 +41,21 @@
             %>
             <% Message.prototypes.each do |m| %>
               <td>
-                
+                <ul>
                 <% (messages_by_category[m[:category]] || []).each do |message| %>
-                  <div><%= link_to "Msg created for son 3/2 (Opened)", message %></div>
+                  <li><%= link_to "Msg for #{message.recipient} #{ message.created_at ? message.created_at.strftime("%m/%d") : nil} (#{ message.has_been_accessed ? "Opened" : "Sent"})", message %></li>
                 <% end %>
+                </ul>
                 <div><%= link_to "Create New", "#{new_report_message_path(report_id: report.to_param)}?message_category=#{m[:category]}" %></div>
               </td>
               
             <% end %>
             
-<% if false %>
-            <td>
-              <% (report.keys || []).each_with_index do |key, index| %>
-              <span class="contain-link">
-                <input id="link-for-<%= report.to_param %>-<%= index %>" 
-                  value="http://<%= request.env["HTTP_HOST"] %><%= show_by_key_reports_path( key) %>"
-                  style="width: 200px; display: inline; font-size: 8px; 
-                    border: none; background-color: transparent; padding: 0px; margin: 0px; " />
-                <a href="#" onclick="copyLinkFor('<%= report.to_param %>-<%= index %>')">Copy #<%= index + 1 %></a> 
-                <span class="checkmark"><i class="fa fa-check" aria-hidden="true"></i></span>
-              </span>
-              <% end %>
-            </td>
-            <td>
-              <% if report.accessed_at %>
-                <%= report.accessed_at.size %> views across <%= report.accessed_at.uniq {|e| e.to_date}.size %> different dates. Last <%= time_ago_in_words report.accessed_at.last %> ago.
-              <% end %>
-            </td>
+            
             <td>
               <%= link_to 'Preview', report_path(report), class: "button small" %>
             </td>              
-            <td>
-              <%= link_to 'Edit', edit_report_path(report), class: "button small" %>
-            </td>
-<% end %>
+
           </tr>
         <% end %>
       </tbody>
