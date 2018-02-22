@@ -1,6 +1,16 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
+  def show_by_key
+    @message = Message.find_by(key: params[:key])
+    
+    @message.record_access
+    
+    @report = @message.report
+
+    render "reports/show"
+  end
+  
   # GET /messages
   def index
     if current_user.admin

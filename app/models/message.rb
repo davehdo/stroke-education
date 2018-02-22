@@ -6,9 +6,14 @@ class Message
   belongs_to :report
   
   field :key, type: String
+  field :accessed_at, type: Array
   
   before_save :generate_key
-    
+
+  def record_access
+    update_attribute :accessed_at, ((self.accessed_at || []) + [Time.now])
+  end
+        
   def generate_key(n_digits = 8)
     o = [('a'..'z'), ('A'..'Z'), 1..9].map(&:to_a).flatten
     self.key ||= (0...n_digits).map { o[rand(o.length)] }.join
