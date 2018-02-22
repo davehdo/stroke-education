@@ -20,5 +20,32 @@
   <%= @message.message_category %>
 </p>
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+<div class="contain-link">
+  <textarea id="link-for-<%= @message.report.to_param %>-1" 
+
+    style="width: 200px; 
+      padding: 0px; margin: 0px; "><%= (@message.text || "").gsub("[URL]", "http://#{ request.env["HTTP_HOST"] }") %></textarea>
+  <a href="#" onclick="copyLinkFor('<%= @message.report.to_param %>-1')">Copy</a> 
+  <span class="checkmark"><i class="fa fa-check" aria-hidden="true"></i></span>
+</div>
+
+
+<script type="text/javascript">
+  const copyLinkFor = (id) => {                  
+    let copyText = $(`#link-for-${ id }`);
+    $("*.copied").removeClass("copied")
+    copyText.closest("*.contain-link").addClass("copied")
+    copyText.select();
+    document.execCommand("Copy");
+  }
+  
+</script>
+
+<style type="text/css" media="screen">
+  .checkmark {display: none;}
+  *.copied .checkmark {display: inline;}
+</style>
+<br />
+<br />
+<%= link_to 'Edit', edit_message_path(@message) , class: "button" %> 
+<%= link_to 'Back', messages_path , class: "button" %>
