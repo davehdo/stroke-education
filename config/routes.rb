@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :messages
   resources :reports
   
   # resources :reports, only: [], path: "r/" do
