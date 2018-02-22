@@ -3,7 +3,14 @@ class MessagesController < ApplicationController
 
   # GET /messages
   def index
-    @messages = Message.all
+    if current_user.admin
+      @reports = Report.desc(:created_at).page(params[:page])
+    else
+      @reports = current_user.reports.desc(:created_at).page(params[:page])
+    end
+    
+    
+    @messages = Message.where(report_id: @reports.collect {|r| r.to_param})
   end
 
   # GET /messages/1

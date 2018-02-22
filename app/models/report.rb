@@ -3,6 +3,7 @@ class Report
   include Mongoid::Timestamps
 
   has_and_belongs_to_many :parts
+  has_many :messages
   
   belongs_to :creator, class_name: "User"
   
