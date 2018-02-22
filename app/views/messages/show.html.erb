@@ -12,7 +12,7 @@
 
 <p>
   <strong>Report:</strong>
-  <%= @message.report %>
+  <%= link_to "Report", @message.report %>
 </p>
 
 <p>
@@ -21,10 +21,10 @@
 </p>
 
 <div class="contain-link">
-  <textarea id="link-for-<%= @message.report.to_param %>-1" 
+  <textarea rows="6" id="link-for-<%= @message.report.to_param %>-1" 
 
     style="width: 200px; 
-      padding: 0px; margin: 0px; "><%= (@message.text || "").gsub("[URL]", "http://#{ request.env["HTTP_HOST"] }") %></textarea>
+      padding: 0px; margin: 0px; "><%= (@message.text || "").gsub("[URL]", "http://#{ request.env["HTTP_HOST"] }#{ show_by_key_messages_path(key: @message.key) }") %></textarea>
   <a href="#" onclick="copyLinkFor('<%= @message.report.to_param %>-1')">Copy</a> 
   <span class="checkmark"><i class="fa fa-check" aria-hidden="true"></i></span>
 </div>

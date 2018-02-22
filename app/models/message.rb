@@ -5,6 +5,16 @@ class Message
   field :message_category, type: Integer
   belongs_to :report
   
+  field :key, type: String
+  
+  before_save :generate_key
+    
+  def generate_key(n_digits = 8)
+    o = [('a'..'z'), ('A'..'Z'), 1..9].map(&:to_a).flatten
+    self.key ||= (0...n_digits).map { o[rand(o.length)] }.join
+  end
+  
+  
   def self.prototypes
     [  
       {description: "Day 0", category: 1, text: "Please click here to find your personalized stroke app [URL]"},

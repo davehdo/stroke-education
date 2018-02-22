@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :messages, only: [:index, :create, :show, :edit]
+  resources :messages, only: [:index, :create, :show, :edit, :update]
   
   resources :reports do
     resources :messages, only: [:new]
@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :parts
   
   get "r/:key" => "reports#show_by_key", as: "show_by_key_reports"
+  get "m/:key" => "messages#show_by_key", as: "show_by_key_messages"
+  
     #
   # namespace :api do
   #   namespace :v1 do
