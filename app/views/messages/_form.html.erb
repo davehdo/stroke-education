@@ -14,7 +14,33 @@
 
   <div class="field">
     <%= form.label :recipient, "Recipient alias" %> 
-    <%= form.text_field :recipient, id: :message_recipient, placeholder: "e.g. son 1, daughter 3" %>
+    <%= form.select :recipient, [
+      "Spouse", 
+      "Daughter #1",
+      "Daughter #2",
+      "Daughter #3",
+      "Son #1",
+      "Son #2",
+      "Son #3",
+      "Granddaughter",
+      "Grandson",
+      "Mother",
+      "Father",
+      "Brother #1",
+      "Brother #2",
+      "Brother #3",
+      "Sister #1",
+      "Sister #2",
+      "Sister #3",
+      "Friend #1",
+      "Friend #2",
+      "Friend #3",
+      "Aunt",
+      "Uncle",
+      "Niece",
+      "Nephew",
+      "Cousin",
+    ], id: :message_recipient %>
   </div>
   
   <div class="field">
@@ -32,6 +58,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit nil, class: "button" %>
   </div>
 <% end %>
