@@ -24,7 +24,7 @@ class Part
       "intro" => "i", 
       "risk factors" => "r", 
       "medications" => "rx", 
-      "testing" => "dx", 
+      "testing" => "t", 
       "followup" => "f"
     }
   end
