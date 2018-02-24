@@ -41,11 +41,11 @@
             %>
             <% Message.prototypes.each do |m| %>
               <td>
-                <ul>
+
                 <% (messages_by_category[m[:category]] || []).each do |message| %>
-                  <li><%= link_to "Msg for #{message.recipient} #{ message.created_at ? message.created_at.strftime("%m/%d") : nil} (#{ message.has_been_accessed ? "Opened" : "Sent"})", message %></li>
+                  <div><i class="fa fa-envelope<%= "-open-o" if message.has_been_accessed %>"></i> <%= link_to "Msg for #{message.recipient} #{ message.created_at ? message.created_at.strftime("%m/%d") : nil} (#{ message.has_been_accessed ? "Opened" : "Sent"})", message %></div>
                 <% end %>
-                </ul>
+
                 <div><%= link_to "Create New", "#{new_report_message_path(report_id: report.to_param)}?message_category=#{m[:category]}" %></div>
               </td>
               
