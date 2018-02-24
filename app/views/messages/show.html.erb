@@ -1,48 +1,58 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  This message was created on <%= @message.created_at %> 
-  (<%= time_ago_in_words(@message.created_at) if @message.created_at %> ago) regarding 
-  <b><%= @message.report.initials || "Unnamed person" %></b> for <b><%= @message.recipient %></b>
-</p>
+<div style="padding: 12px;">
+  <p>
+    This message was created on <%= @message.created_at %> 
+    (<%= time_ago_in_words(@message.created_at) if @message.created_at %> ago) regarding 
+    <b><%= @message.report.initials || "Unnamed person" %></b> for <b><%= @message.recipient %></b>
+  </p>
+  <div class="callout warning">
+    <h5>This does NOT send automatically</h5>
+    <p>Copy the message below and send to intended recipient</p>
+  </div>
 
-<p>
-  <strong>Recipient:</strong>
-  <%= @message.recipient %>
-</p>
-
-<p>
-  <strong>Report:</strong>
-  <%= link_to "Link", @message.report %>
-</p>
-
-<p>
-  <strong>Access History:</strong>
-  <% if @message.accessed_at %>
-    <% (@message.accessed_at).each do |d| %>
-      <div>Viewed on <%= d %></div>
-    <% end %>
-  <% else %>
-    None
-  <% end %>
-</p>
+  <p>
+    <strong>Intended Recipient:</strong>
+    <%= @message.recipient %>
+  </p>
 
 
-<p>
-  <strong>Message</strong>
-</p>
 
-<div class="contain-link">
-  <label>
-    Copy this text and send to user
-    <textarea rows="6" id="link-for-<%= @message.report.to_param %>-1"><%= (@message.text || "").gsub("[URL]", "http://#{ request.env["HTTP_HOST"] }#{ show_by_key_messages_path(key: @message.key) }") %></textarea>
-  </label>
-  <a href="#" class="button" onclick="copyLinkFor('<%= @message.report.to_param %>-1')">
-    <span class="checkmark"><i class="fa fa-check" aria-hidden="true"></i></span>
-    Copy 
-  </a> 
+  <div class="contain-link">
+    <strong>Message</strong>
+    <label>
+      Copy this text and manually send to user
+      <textarea rows="4" id="link-for-<%= @message.report.to_param %>-1"><%= (@message.text || "").gsub("[URL]", "http://#{ request.env["HTTP_HOST"] }#{ show_by_key_messages_path(key: @message.key) }") %></textarea>
+    </label>
+    <a href="#" class="button" onclick="copyLinkFor('<%= @message.report.to_param %>-1')">
+      <span class="checkmark"><i class="fa fa-check" aria-hidden="true"></i></span>
+      Copy 
+    </a> 
   
+  </div>
+
+  <div>
+    <strong>Access History:</strong>
+    <% if @message.accessed_at %>
+      <% (@message.accessed_at).each do |d| %>
+        <div>Viewed on <%= d %></div>
+      <% end %>
+    <% else %>
+      None
+    <% end %>
+  </div>
+
+  <p>
+    <strong>Report:</strong>
+    <%= link_to "Link to see what the patient sees", @message.report %>
+  </p>
+
+  <br />
+  <br />
+  <%= link_to 'Edit', edit_message_path(@message) , class: "button" %> 
+  <%= link_to 'Back', messages_path , class: "button" %>
 </div>
+
 
 
 <script type="text/javascript">
@@ -60,7 +70,3 @@
   .checkmark {display: none;}
   *.copied .checkmark {display: inline;}
 </style>
-<br />
-<br />
-<%= link_to 'Edit', edit_message_path(@message) , class: "button" %> 
-<%= link_to 'Back', messages_path , class: "button" %>
