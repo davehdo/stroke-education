@@ -27,12 +27,12 @@ class Message
   
   def self.prototypes
     [  
-      {description: "Day 0", category: 1, text: "Please click here to find your personalized stroke app [URL]"},
-      {description: "Day 1", category: 2, text: "Please click here to review your stroke prevention medications"},
-      {description: "Day 4", category: 3, text: "Please click here to review the cause of your stroke"},
-      {description: "Day 7", category: 4, text: "Please click here to review your stroke risk factors"},
-      {description: "Day 10", category: 5, text:  "Do you have an appointment to see your primary doctor? if not, please call to schedule a visit. It is important to see your primary doctor to discuss changes that happened while you were in the hospital."}, 
-      {description: "Day 11", category: 6, text:  "Do you have an appointment with a neurologist? if not, Please call 215-662-3606 to schedule your appointment with Dr. ____"}
+      {description: "D0 Msg", category: 1, text: "Click here to find your personalized stroke app [URL]"},
+      {description: "D1 Msg", category: 2, text: "Click here to review your stroke prevention medications [URL]"},
+      {description: "D4 Msg", category: 3, text: "Click here to review the cause of your stroke [URL]"},
+      {description: "D7 Msg", category: 4, text: "Click here to review your stroke risk factors [URL]"},
+      {description: "D10 Msg", category: 5, text:  "Do you have an appointment to see your primary doctor? if not, please call to schedule a visit. It is important to see your primary doctor to discuss changes that happened while you were in the hospital."}, 
+      {description: "D11 Msg", category: 6, text:  "Do you have an appointment with a neurologist? if not, Please call 215-662-3606 to schedule your appointment with Dr. ____"}
     ]
   end
 end
