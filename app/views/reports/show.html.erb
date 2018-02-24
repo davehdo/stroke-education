@@ -3,8 +3,8 @@
   <dl class="sub-nav">
     <dt>My Stroke Information</dt>
     <% Part.section_names.each do |n| %>
-    <dd data-magellan-arrival="<%= n.gsub(/\ /, "_") %>">
-      <a href="#<%= n.gsub(/\ /, "_") %>"><%= n.capitalize %></a>
+    <dd data-magellan-arrival="<%= Part.section_names_to_anchors[n] || "x" %>">
+      <a href="#<%= Part.section_names_to_anchors[n] || "x" %>"><%= n.capitalize %></a>
     </dd>
     <% end %>
   </dl>
@@ -27,32 +27,37 @@
 
 <div class="report">    
   <div class="dark-section">
-    <h3 id="intro" class="text-center" data-magellan-destination="intro">My Stroke</h3>
+    <h3 id="<%= Part.section_names_to_anchors["intro"] || "x" %>" 
+      class="text-center" data-magellan-destination="<%= Part.section_names_to_anchors["intro"] || "x" %>">My Stroke</h3>
     <p class="text-center"><i>This information tool was custom-made for <%= @report.initials.present? ? @report.initials : "me" %> on <%= @report.created_at.strftime("%B %-m, %Y") %></i></p>
   
     <%= render "parts/parts", parts: @report.parts.select {|e| e.section == "intro"} %>
   </div>
 
   <div class="light-section">
-    <h3 id="risk_factors" class="text-center" data-magellan-destination="risk_factors">My Risk Factors</h3>
+    <h3 id="<%= Part.section_names_to_anchors["risk factors"] || "x" %>" 
+      class="text-center" data-magellan-destination="<%= Part.section_names_to_anchors["risk factors"] || "x" %>">My Risk Factors</h3>
   
     <%= render "parts/parts", parts: @report.parts.select {|e| e.section == "risk factors"} %>
   </div>
 
   <div  class="dark-section">
-    <h3 id="medications" class="text-center" data-magellan-destination="medications">My Stroke-Prevention Medications</h3>
+    <h3 id="<%= Part.section_names_to_anchors["medications"] || "x" %>" 
+      class="text-center" data-magellan-destination="<%= Part.section_names_to_anchors["medications"] || "x" %>">My Stroke-Prevention Medications</h3>
     <br />
     <div class="callout primary text-center"><i class="fa fa-flask" aria-hidden="true"></i>  Just the stroke ones are listed here. Upon discharge, the nurse will review my complete medication list with me.</div>
     <%= render "parts/parts", parts: @report.parts.select {|e| e.section == "medications"} %>
   </div>
 
   <div class="light-section">
-    <h3 id="testing" class="text-center" data-magellan-destination="testing">My Upcoming Testing</h3>
+    <h3 id="<%= Part.section_names_to_anchors["testing"] || "x" %>" 
+      class="text-center" data-magellan-destination="<%= Part.section_names_to_anchors["testing"] || "x" %>">My Upcoming Testing</h3>
     <%= render "parts/parts", parts: @report.parts.select {|e| e.section == "testing"} %>
   </div>
 
   <div class="dark-section">
-    <h3 id="followup" class="text-center" data-magellan-destination="followup">My Follow Up</h3>
+    <h3 id="<%= Part.section_names_to_anchors["followup"] || "x" %>" 
+      class="text-center" data-magellan-destination="<%= Part.section_names_to_anchors["followup"] || "x" %>">My Follow Up</h3>
     <%= render "parts/parts", parts: @report.parts.select {|e| e.section == "followup"} %>
   </div>
 

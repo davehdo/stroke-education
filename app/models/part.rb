@@ -12,9 +12,23 @@ class Part
   field :is_checked_by_default, type: Boolean, default: false
   field :embedded_html, type: String
   
+  # beware that changing this may dissociate parts with the correct sections of the report
   def self.section_names
     ["intro", "risk factors", "medications", "testing", "followup"]
   end
+  
+  # link each section name with an anchor name, but use
+  # short anchors so can get short URLs
+  def self.section_names_to_anchors
+    {
+      "intro" => "i", 
+      "risk factors" => "r", 
+      "medications" => "rx", 
+      "testing" => "dx", 
+      "followup" => "f"
+    }
+  end
+  
   
   validate :ensure_has_name_or_annotation
   
