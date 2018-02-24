@@ -4,6 +4,7 @@
   <dl class="sub-nav">
     <dt>Admin Tools <%= current_user ? "(#{ current_user.first_name })" : "" %></dt>
     <dd><%= link_to "All Reports", reports_path %></dd>
+    <dd><%= link_to "Messages", messages_path %></dd>
     <dd><%= link_to "New Report", new_report_path %></dd>
     <dd><%= link_to "Edit Templated Sections", parts_path %></dd>
     <dd><%= link_to "New Templated Section", new_part_path %></dd>
